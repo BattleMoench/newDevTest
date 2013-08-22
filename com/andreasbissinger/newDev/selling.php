@@ -12,7 +12,7 @@
  * @copyright © OXID eSales AG 2003-2013
  */
 
-namespace com\oxidesales\newDev;
+namespace com\andreasbissinger\newDev;
 
 /**
  * Add class comment
