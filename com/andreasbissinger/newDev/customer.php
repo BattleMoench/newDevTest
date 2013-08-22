@@ -56,22 +56,7 @@ class customer
                          ' = ' . $oSelling->getAmount() * $oSelling->getArticle()->getPrice() . "\n";
             $fSubTotal = $oSelling->getAmount() * $oSelling->getArticle()->getPrice();
 
-            if ( 20 <= $oSelling->getAmount() ) {
-                switch ( $oSelling->getArticle()->getMarginType() ) {
-                    case article::MARGIN_TYPE_A:
-                        $sMessage .= 'Rabatt ( 5% ): -' . ( $oSelling->getAmount() * $oSelling->getArticle()->getPrice() * 5 ) / 100 . "\n";
-                        $fSubTotal -= ( $oSelling->getAmount() * $oSelling->getArticle()->getPrice() * 5 ) / 100;
-                        break;
-                    case article::MARGIN_TYPE_B:
-                        $sMessage .= 'Rabatt ( 10% ): -' . ( $oSelling->getAmount() * $oSelling->getArticle()->getPrice() * 10 ) / 100 . "\n";
-                        $fSubTotal -= ( $oSelling->getAmount() * $oSelling->getArticle()->getPrice() * 10 ) / 100;
-                        break;
-                    case article::MARGIN_TYPE_C:
-                        $sMessage .= 'Rabatt ( 20% ): -' . ( $oSelling->getAmount() * $oSelling->getArticle()->getPrice() * 20 ) / 100 . "\n";
-                        $fSubTotal -= ( $oSelling->getAmount() * $oSelling->getArticle()->getPrice() * 20 ) / 100;
-                        break;
-                }
-            }
+            $oSelling->handleDiscount( $sMessage, $fSubTotal );
             $fTotal += $fSubTotal;
         }
 
@@ -79,4 +64,5 @@ class customer
 
         return $sMessage;
     }
+
 }
