@@ -87,7 +87,7 @@ class customer
             $fTotal += $fSubTotal;
         }
 
-        $sMessage = "\n\nDie Rechnungssumme beträgt: $fTotal";
+        $sMessage .= "\n\nDie Rechnungssumme beträgt: $fTotal\n\n";
 
         return $sMessage;
     }
