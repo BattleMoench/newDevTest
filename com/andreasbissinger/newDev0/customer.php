@@ -55,7 +55,6 @@ class customer
                          ' a ' . $oSelling->getArticle()->getPrice() .
                          ' = ' . $oSelling->getAmount() * $oSelling->getArticle()->getPrice() . "\n";
             $fSubTotal = $oSelling->getAmount() * $oSelling->getArticle()->getPrice();
-
             if ( 20 <= $oSelling->getAmount() ) {
                 switch ( $oSelling->getArticle()->getMarginType() ) {
                     case article::MARGIN_TYPE_A:
