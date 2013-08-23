@@ -3,10 +3,12 @@
 namespace com\andreasbissinger\newDev;
 
 /**
- * Add class comment
+ * Class represents bought article. It hold cont and type of article and can calculate the total for this selling
  */
 class selling
 {
+    const DISCOUNT_COUNT = 20;
+
     /**
      * @var article
      */
@@ -48,29 +50,32 @@ class selling
     }
 
     /**
-     * @param string  $sMessage
-     * @param string  $fSubTotal
+     * @return float
      */
-    public function handleDiscount( &$sMessage, &$fSubTotal )
+    public function getArticleTotal()
     {
-        if ( 20 <= $this->getAmount() ) {
-            switch ( $this->getArticle()->getMarginType() ) {
-                case article::MARGIN_TYPE_A:
-                    $sMessage .= 'Rabatt ( 5% ): -' .
-                                 ( $this->getAmount() * $this->getArticle()->getPrice() * 5 ) / 100 . "\n";
-                    $fSubTotal -= ( $this->getAmount() * $this->getArticle()->getPrice() * 5 ) / 100;
-                    break;
-                case article::MARGIN_TYPE_B:
-                    $sMessage .= 'Rabatt ( 10% ): -' .
-                                 ( $this->getAmount() * $this->getArticle()->getPrice() * 10 ) / 100 . "\n";
-                    $fSubTotal -= ( $this->getAmount() * $this->getArticle()->getPrice() * 10 ) / 100;
-                    break;
-                case article::MARGIN_TYPE_C:
-                    $sMessage .= 'Rabatt ( 20% ): -' .
-                                 ( $this->getAmount() * $this->getArticle()->getPrice() * 20 ) / 100 . "\n";
-                    $fSubTotal -= ( $this->getAmount() * $this->getArticle()->getPrice() * 20 ) / 100;
-                    break;
-            }
+        $fSubTotal = $this->getAmount() * $this->getArticle()->getPrice();
+
+        if ( $this->hasDiscount() ) {
+            $fSubTotal -= ( $this->getAmount() * $this->getArticle()->getPrice() * $this->getSellingDiscount() ) / 100;
         }
+
+        return $fSubTotal;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSellingDiscount()
+    {
+        return $this->getArticle()->getDiscountInPercent();
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasDiscount()
+    {
+        return self::DISCOUNT_COUNT <= $this->getAmount();
     }
 }

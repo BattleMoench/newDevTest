@@ -3,7 +3,7 @@
 namespace com\andreasbissinger\newDev;
 
 /**
- * Add class comment
+ * This class represents a customer with his sellings. It is used for generating customers bill
  */
 class customer
 {
@@ -12,8 +12,14 @@ class customer
      */
     private $aSellings = array();
 
+    /**
+     * @var string
+     */
     private $_sName = null;
 
+    /**
+     * @param string $sName
+     */
     public function __construct( $sName )
     {
         $this->_sName = $sName;
@@ -39,30 +45,22 @@ class customer
         return $this->aSellings;
     }
 
+    /**
+     * @param selling $oSelling
+     */
     public function addSelling( selling $oSelling )
     {
         $this->aSellings[] = $oSelling;
     }
 
-    public function getBill()
+    /**
+     * @return string
+     */
+    public function getBill( $sType = billMessage::TYPE_TEXT )
     {
-        $fTotal = 0.0;
-        $sMessage = 'Rechnung für Kunde ' . $this->getName() . "\n\n";
+        $oMessenger = billMessage::getBillMessager( $sType );
 
-        /** @var $oSelling selling */
-        foreach( $this->getSellings() as $oSelling ) {
-            $sMessage .= $oSelling->getAmount() . ' x ' . $oSelling->getArticle()->getName() .
-                         ' a ' . $oSelling->getArticle()->getPrice() .
-                         ' = ' . $oSelling->getAmount() * $oSelling->getArticle()->getPrice() . "\n";
-            $fSubTotal = $oSelling->getAmount() * $oSelling->getArticle()->getPrice();
-
-            $oSelling->handleDiscount( $sMessage, $fSubTotal );
-            $fTotal += $fSubTotal;
-        }
-
-        $sMessage .= "\n\nDie Rechnungssumme beträgt: $fTotal\n\n";
-
-        return $sMessage;
+        return $oMessenger->getBillMessage( $this->getSellings(), $this->getName() );
     }
 
 }

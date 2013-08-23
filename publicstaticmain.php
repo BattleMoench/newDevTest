@@ -1,6 +1,7 @@
 <?php
 
 use com\andreasbissinger\newDev\article;
+use com\andreasbissinger\newDev\billMessage;
 use com\andreasbissinger\newDev\customer;
 use com\andreasbissinger\newDev\selling;
 
@@ -34,13 +35,14 @@ $oCustomer->addSelling( $oSelling4 );
 
 $sBill = $oCustomer->getBill();
 
-$sExpected = "Rechnung für Kunde me@myself\n\n30 x art1 a 0.12 = 3.6\nRabatt ( 5% ): -0.18\n20 x art2 a 1.28 = 25.6\nRabatt ( 10% ): -2.56\n25 x art3 a 0.55 = 13.75\nRabatt ( 20% ): -2.75\n10 x art4 a 0.1 = 1\n\n\nDie Rechnungssumme beträgt: 38.46\n\n";
+$sExpectedText = "Rechnung für Kunde me@myself\n\n30 x art1 a 0.12 = 3.6\nRabatt ( 5% ): -0.18\n20 x art2 a 1.28 = 25.6\nRabatt ( 10% ): -2.56\n25 x art3 a 0.55 = 13.75\nRabatt ( 20% ): -2.75\n10 x art4 a 0.1 = 1\n\n\nDie Rechnungssumme beträgt: 38.46\n\n";
+//$sExpectedHtml = "Rechnung für Kunde me@myself<br /><br />30 x art1 a 0.12 = 3.6<br />Rabatt ( 5% ): -0.18<br />20 x art2 a 1.28 = 25.6<br />Rabatt ( 10% ): -2.56<br />25 x art3 a 0.55 = 13.75<br />Rabatt ( 20% ): -2.75<br />10 x art4 a 0.1 = 1<br /><br /><br />Die Rechnungssumme beträgt: 38.46<br /><br />";
 
 echo $sBill;
 
-$blResult = $sExpected == $sBill ? true : false;;
+$blResult = $sExpectedText == $sBill ? true : false;;
 if (!$blResult) {
-    echo "\n---------------------------------------------\n" . $sExpected . "\n\nMIST\n";
+    echo "\n---------------------------------------------\n" . $sExpectedText . "\n\nMIST\n";
 } else {
     echo "\n\nFEIN\n";
 }

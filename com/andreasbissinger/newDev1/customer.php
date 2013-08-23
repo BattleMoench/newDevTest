@@ -1,6 +1,6 @@
 <?php
 
-namespace com\andreasbissinger\newDev1;
+namespace com\andreasbissinger\newDev;
 
 /**
  * Add class comment
@@ -12,8 +12,14 @@ class customer
      */
     private $aSellings = array();
 
+    /**
+     * @var string
+     */
     private $_sName = null;
 
+    /**
+     * @param string $sName
+     */
     public function __construct( $sName )
     {
         $this->_sName = $sName;
@@ -39,11 +45,17 @@ class customer
         return $this->aSellings;
     }
 
+    /**
+     * @param selling $oSelling
+     */
     public function addSelling( selling $oSelling )
     {
         $this->aSellings[] = $oSelling;
     }
 
+    /**
+     * @return string
+     */
     public function getBill()
     {
         $fTotal = 0.0;
@@ -51,12 +63,9 @@ class customer
 
         /** @var $oSelling selling */
         foreach( $this->getSellings() as $oSelling ) {
-            $sMessage .= $oSelling->getAmount() . ' x ' . $oSelling->getArticle()->getName() .
-                         ' a ' . $oSelling->getArticle()->getPrice() .
-                         ' = ' . $oSelling->getAmount() * $oSelling->getArticle()->getPrice() . "\n";
-            $fSubTotal = $oSelling->getAmount() * $oSelling->getArticle()->getPrice();
 
-            $this->handleDiscount( $oSelling, $sMessage, $fSubTotal );
+            $fSubTotal = $oSelling->getArticleTotal();
+            $sMessage .= $oSelling->getArticleMessage();
             $fTotal += $fSubTotal;
         }
 
@@ -65,31 +74,4 @@ class customer
         return $sMessage;
     }
 
-    /**
-     * @param selling $oSelling
-     * @param string  $sMessage
-     * @param string  $fSubTotal
-     */
-    public function handleDiscount( $oSelling, &$sMessage, &$fSubTotal )
-    {
-        if ( 20 <= $oSelling->getAmount() ) {
-            switch ( $oSelling->getArticle()->getMarginType() ) {
-                case article::MARGIN_TYPE_A:
-                    $sMessage .= 'Rabatt ( 5% ): -' .
-                                 ( $oSelling->getAmount() * $oSelling->getArticle()->getPrice() * 5 ) / 100 . "\n";
-                    $fSubTotal -= ( $oSelling->getAmount() * $oSelling->getArticle()->getPrice() * 5 ) / 100;
-                    break;
-                case article::MARGIN_TYPE_B:
-                    $sMessage .= 'Rabatt ( 10% ): -' .
-                                 ( $oSelling->getAmount() * $oSelling->getArticle()->getPrice() * 10 ) / 100 . "\n";
-                    $fSubTotal -= ( $oSelling->getAmount() * $oSelling->getArticle()->getPrice() * 10 ) / 100;
-                    break;
-                case article::MARGIN_TYPE_C:
-                    $sMessage .= 'Rabatt ( 20% ): -' .
-                                 ( $oSelling->getAmount() * $oSelling->getArticle()->getPrice() * 20 ) / 100 . "\n";
-                    $fSubTotal -= ( $oSelling->getAmount() * $oSelling->getArticle()->getPrice() * 20 ) / 100;
-                    break;
-            }
-        }
-    }
 }
