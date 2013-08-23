@@ -20,8 +20,8 @@ class billMessage
                 break;
 
             case self::TYPE_HTML:
-                $oMessenger = new billMessageHtml();
-                break;
+//                $oMessenger = new billMessageHtml();
+//                break;
 
             default:
                 throw new \Exception( 'Invalid message type' );

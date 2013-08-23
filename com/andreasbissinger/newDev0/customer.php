@@ -12,6 +12,9 @@ class customer
      */
     private $aSellings = array();
 
+    /**
+     * @var string
+     */
     private $_sName = null;
 
     public function __construct( $sName )

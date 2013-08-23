@@ -1,1 +1,16 @@
-This file was created by JetBrains PhpStorm 6.0.3 for binding GitHub repository
+Little example of refactoring a small part of an application.
+Use this as a example, as exercise or to test someones skills
+
+In newDev0 sthe task is located, newDev1 contains a refactored version, newDev2 has more refactored version,
+that also can handle different output format, here HTML and TEXT.
+
+The task is a small billing task, that create a bill for customers basket, that contains articles.
+If a defined amount of articles is reached (here 20) a discount is given, depending on articles margin group.
+
+The goal is to output the bill text.
+
+The classes:
+article  - represents a article, it's name, margin type and price
+selling  - represents a article and it's count in basket
+customer - assign an customer (by name) to a selling and can deliver the bill text
+
