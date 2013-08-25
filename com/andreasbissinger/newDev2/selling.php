@@ -3,7 +3,7 @@
 namespace com\andreasbissinger\newDev;
 
 /**
- * Class represents bought article. It hold cont and type of article and can calculate the total for this selling
+ * Class represents bought article. It hold count and type of article and can calculate the total for this selling
  */
 class selling
 {
@@ -20,8 +20,12 @@ class selling
     private $_iAmount = 0;
 
     /**
+     * Creates a selling object and set article and it's count.
+     *
      * @param article $oArticle
      * @param int     $iAmount
+     *
+     * @return selling
      */
     public function __construct( article $oArticle, $iAmount )
     {
@@ -30,7 +34,7 @@ class selling
     }
 
     /**
-     * Get the
+     * Get the bought amount
      *
      * @return int
      */
@@ -40,7 +44,7 @@ class selling
     }
 
     /**
-     * Get the
+     * Get the bought article
      *
      * @return article
      */
@@ -50,6 +54,8 @@ class selling
     }
 
     /**
+     * Calculates the total of this selling by using articles price and amount
+     *
      * @return float
      */
     public function getArticleTotal()
@@ -64,7 +70,9 @@ class selling
     }
 
     /**
-     * @return mixed
+     * Get the discount in percent
+     *
+     * @return int
      */
     public function getSellingDiscount()
     {
@@ -72,7 +80,9 @@ class selling
     }
 
     /**
-     * @return bool
+     * Checks whether a discount is available
+     *
+     * @return bool Tru in case there is a discount, false otherwise
      */
     public function hasDiscount()
     {

@@ -2,37 +2,33 @@
 
 namespace com\andreasbissinger\newDev;
 
-use com\andreasbissinger\newDev\article;
-
 /**
- * Add class comment
+ * Class represents bought article. It hold count and type of article and can calculate the total for this selling
  */
 class selling
 {
-    const DISCOUNT_COUNT = 20;
     /**
-     * @var article
+     * Count of articles to buy, to get a discount
+     */
+    const DISCOUNT_COUNT = 20;
+
+    /**
+     * @var article Bought article
      */
     private $_oArticle = null;
 
     /**
-     * @var int
+     * @var int Bought count of this article
      */
     private $_iAmount = 0;
 
     /**
-     * @var string
-     */
-    private $_sDiscountString = '';
-
-    /**
-     * @var string
-     */
-    private $_sSellingsMessage = '';
-
-    /**
+     * Creates a selling object and set article and it's count.
+     *
      * @param article $oArticle
      * @param int     $iAmount
+     *
+     * @return selling
      */
     public function __construct( article $oArticle, $iAmount )
     {
@@ -43,7 +39,7 @@ class selling
     }
 
     /**
-     * Get the
+     * Get the bought amount
      *
      * @return int
      */
@@ -53,7 +49,7 @@ class selling
     }
 
     /**
-     * Get the
+     * Get the bougnt article
      *
      * @return article
      */
@@ -62,19 +58,10 @@ class selling
         return $this->_oArticle;
     }
 
-    public function getArticleMessage()
-    {
-        $sMessage = $this->getAmount() . ' x ' . $this->getArticle()->getName() .
-                    ' a ' . $this->getArticle()->getPrice() .
-                    ' = ' . $this->getAmount() * $this->getArticle()->getPrice() . "\n";
-
-        if ( $this->_hasDiscount() ) {
-            $sMessage .= $this->_getDiscountString() . ( $this->getAmount() * $this->getArticle()->getPrice() * $this->_getArticleDiscount() ) / 100 . "\n";
-        }
-        return $sMessage;
-    }
-
     /**
+     * Calculates the total of this selling by using articles price and amount
+     *
+     * @return float
      */
     public function getArticleTotal()
     {
@@ -90,6 +77,23 @@ class selling
     /**
      * @return string
      */
+    public function getArticleMessage()
+    {
+        $sMessage = $this->getAmount() . ' x ' . $this->getArticle()->getName() .
+                    ' a ' . $this->getArticle()->getPrice() .
+                    ' = ' . $this->getAmount() * $this->getArticle()->getPrice() . "\n";
+
+        if ( $this->_hasDiscount() ) {
+            $sMessage .= $this->_getDiscountString() . ( $this->getAmount() * $this->getArticle()->getPrice() * $this->_getArticleDiscount() ) / 100 . "\n";
+        }
+        return $sMessage;
+    }
+
+    /**
+     * Get the string with discount in percent to display
+     *
+     * @return string
+     */
     private function _getDiscountString()
     {
         $sDiscount = (string) $this->_getArticleDiscount();
@@ -98,7 +102,9 @@ class selling
     }
 
     /**
-     * @return mixed
+     * Get the articles discount in ppercent
+     *
+     * @return int
      */
     private function _getArticleDiscount()
     {
@@ -106,7 +112,9 @@ class selling
     }
 
     /**
-     * @return bool
+     * Checks whether a discount is available
+     *
+     * @return bool Tru in case there is a discount, false otherwise
      */
     private function _hasDiscount()
     {

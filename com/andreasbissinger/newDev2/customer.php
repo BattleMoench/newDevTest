@@ -13,12 +13,16 @@ class customer
     private $aSellings = array();
 
     /**
-     * @var string
+     * @var string Customers name
      */
     private $_sName = null;
 
     /**
+     * Create a customer object and set customers name
+     *
      * @param string $sName
+     *
+     * @return customer
      */
     public function __construct( $sName )
     {
@@ -36,17 +40,20 @@ class customer
     }
 
     /**
-     * Get the
+     * Get all sellings of current customer
      *
-     * @return array
+     * @return array Array containing selleings
      */
     public function getSellings()
     {
         return $this->aSellings;
     }
-
     /**
-     * @param selling $oSelling
+     * Add a selling to customers sellings list
+     *
+     * @param selling $oSelling A selling
+     *
+     * @return null
      */
     public function addSelling( selling $oSelling )
     {
@@ -54,6 +61,8 @@ class customer
     }
 
     /**
+     * Create a string that contains all articles, it's count and discounts and a total to use in bill.
+     *
      * @return string
      */
     public function getBill( $sType = billMessage::TYPE_TEXT )
