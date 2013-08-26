@@ -1,18 +1,6 @@
 <?php
-/**
- * This Software is the property of OXID eSales and is protected
- * by copyright law - it is NOT Freeware.
- *
- * Any unauthorized use of this software without a valid license key
- * is a violation of the license agreement and will be prosecuted by
- * civil and criminal law.
- *
- * @link http://www.oxid-esales.com
- * @package package_name
- * @copyright © OXID eSales AG 2003-2013
- */
 
-namespace com\andreasbissinger\newDev;
+namespace de\andreasbissinger\newDev0;
 
 /**
  * Add class comment
@@ -45,11 +33,6 @@ class article
     private $_iMarginType = null;
 
     /**
-     * @var array
-     */
-    private $_aDiscounts = array( self::MARGIN_TYPE_A => 5, self::MARGIN_TYPE_B => 10, self::MARGIN_TYPE_C => 20 );
-
-    /**
      * @param string $sName
      * @param float  $fPrice
      * @param int    $iMarginType
@@ -79,14 +62,6 @@ class article
     public function getMarginType()
     {
         return $this->_iMarginType;
-    }
-
-    /**
-     * @return int
-     */
-    public function getDiscountInPercent()
-    {
-        return $this->_aDiscounts[ $this->getMarginType() ];
     }
 
     /**

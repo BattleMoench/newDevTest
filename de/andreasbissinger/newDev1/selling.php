@@ -1,6 +1,6 @@
 <?php
 
-namespace com\andreasbissinger\newDev;
+namespace de\andreasbissinger\newDev;
 
 /**
  * Class represents bought article. It hold count and type of article and can calculate the total for this selling

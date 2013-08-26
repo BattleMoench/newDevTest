@@ -1,9 +1,9 @@
 <?php
 
-use com\andreasbissinger\newDev\article;
-use com\andreasbissinger\newDev\billMessage;
-use com\andreasbissinger\newDev\customer;
-use com\andreasbissinger\newDev\selling;
+use de\andreasbissinger\newDev\article;
+use de\andreasbissinger\newDev\billMessage;
+use de\andreasbissinger\newDev\customer;
+use de\andreasbissinger\newDev\selling;
 
 $sBasePath = dirname( __FILE__ );
 define( BASE_PATH, $sBasePath );

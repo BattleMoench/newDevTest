@@ -1,6 +1,6 @@
 <?php
 
-namespace com\andreasbissinger\newDev;
+namespace de\andreasbissinger\newDev;
 
 /**
  * This class represents a customer with his sellings. It is used for generating customers bill

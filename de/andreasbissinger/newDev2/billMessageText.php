@@ -1,6 +1,6 @@
 <?php
 
-namespace com\andreasbissinger\newDev;
+namespace de\andreasbissinger\newDev;
 
 /**
  * Add class comment

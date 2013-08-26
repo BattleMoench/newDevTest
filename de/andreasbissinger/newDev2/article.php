@@ -12,7 +12,7 @@
  * @copyright © OXID eSales AG 2003-2013
  */
 
-namespace com\andreasbissinger\newDev;
+namespace de\andreasbissinger\newDev;
 
 /**
  * This class represents a article containing a name, a price and a margin type
