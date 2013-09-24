@@ -15,7 +15,7 @@
 namespace de\andreasbissinger\newDev;
 
 /**
- * Add class comment
+ * This class represents a article containing a name, a price and a margin type
  */
 class article
 {

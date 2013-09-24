@@ -70,6 +70,16 @@ class selling
     }
 
     /**
+     * Calculates the brut price of this selling ignoring discounts
+     *
+     * @return float
+     */
+    public function getArticleBrutPrice()
+    {
+        return $this->getAmount() * $this->getArticle()->getPrice();
+    }
+
+    /**
      * Get the discount in percent
      *
      * @return int

@@ -25,7 +25,7 @@ class billMessageText extends billMessage
             $this->_oSelling = $oSelling;
             $fSubTotal = $this->_oSelling->getArticleTotal();
             $sMessage .= $this->getArticleMessage();
-            $fTotal += $fSubTotal;
+            $fTotal   += $fSubTotal;
         }
 
         $sMessage .= "\n\nDie Rechnungssumme beträgt: $fTotal\n\n";
