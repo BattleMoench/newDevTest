@@ -20,12 +20,7 @@ class article
     /**
      * @var float
      */
-    private $_fPrice = 0.0;
-
-    /**
-     * @var string
-     */
-    private $_sName = null;
+    public $_fPrice = false;
 
     /**
      * @var int
@@ -35,7 +30,6 @@ class article
     /**
      * @param string $sName
      * @param float  $fPrice
-     * @param int    $iMarginType
      */
     public function __construct( $sName, $fPrice, $iMarginType )
     {

@@ -15,16 +15,16 @@ class selling
     /**
      * @var int
      */
-    private $_iAmount = 0;
+    public $amount = null;
 
     /**
      * @param article $oArticle
      * @param int     $iAmount
      */
-    public function __construct( article $oArticle, $iAmount )
+    public function __construct( $oArticle, $iAmount )
     {
         $this->_oArticle = $oArticle;
-        $this->_iAmount = $iAmount;
+        $this->amount = $iAmount;
     }
 
     /**
@@ -34,7 +34,7 @@ class selling
      */
     public function getAmount()
     {
-        return $this->_iAmount;
+        return $this->amount;
     }
 
     /**
