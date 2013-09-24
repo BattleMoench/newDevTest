@@ -1,21 +1,22 @@
 Beispielaufgabe:
 
-Szenario: 
+Szenario:
 Ein Schraubenhändler verkauft Schrauben an seine Kunden.
 Zur Zeit wird ab 20 Stück ein vom Schraubentyp abhängiger Rabatt gewährt.
 Die Rechnung wird mit beiliegendem Programm als Text generiert.
-Um Zukunftssicherheit zu gewährleisten, möchte der Händler weitere Ausgabeformate 
+Um Zukunftssicherheit zu gewährleisten, möchte der Händler weitere Ausgabeformate
 unterstützen, so z.B als HTML.
-Da sich keiner mehr mit dem Code auskennt und der Code nicht mehr auf aktuellem Stand ist, 
+Da sich keiner mehr mit dem Code auskennt und der Code nicht mehr auf aktuellem Stand ist,
 braucht der Händler zum erfolgreichen Fortsetzen seiner Geschäftstätigkeit Deine Hilfe.
 
 ------------------
 
 Der Code entspricht auf vielen Ebenen nicht mehr moderner Softwareentwicklung.
-Nimm Dir eine Stunde Zeit und überlege Dir, wie man den Code verbessern kann. 
+Nimm Dir eine Stunde Zeit und überlege Dir, wie man den Code verbessern kann.
 Ändere den Code, achte auf Standards.
 
 Wir legen Wert auf sauberen, gut getesteten und dokumentierten Code.
+Spaghetti essen wir gern, wollen wir aber nicht im Code sehen.
 
-Das publicStaticMain script gibt Anhaltspunkte zur Verwendung 
-und zum erwarteten Ausgabetext. 
+Das publicStaticMain script gibt Anhaltspunkte zur Verwendung
+und zum erwarteten Ausgabetext.
